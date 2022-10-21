@@ -84,9 +84,10 @@ export async function renderPost(){
         const h2Title = document.createElement("h2");
         h2Title.classList.add("post-title");
         h2Title.innerText = `${post.title}`;
-        const pContent = document.createElement("p");
+        const pContent = document.createElement("textarea");
         pContent.classList.add("post-content");
         pContent.innerText = `${post.content}`;
+        pContent.maxLength = "145";
         const linkContent = document.createElement("a");
         linkContent.innerText = "Acessar publicação"
         divBody.append(h2Title,pContent,linkContent);
@@ -97,3 +98,10 @@ export async function renderPost(){
 
 }
 renderPost()
+function clickExitUser(){
+    const imgUser = document.querySelector(".user-img");
+    imgUser.addEventListener("click",()=>{
+        console.log("OI")
+    })
+}
+clickExitUser()

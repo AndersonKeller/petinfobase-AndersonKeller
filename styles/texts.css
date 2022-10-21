@@ -41,3 +41,6 @@ a{
     font-size: var(--font-subtitle);
     font-weight: var(--font-weigth2);
 }
+.subtitle-delete{
+    font-size: var(--font-subtitle);
+}

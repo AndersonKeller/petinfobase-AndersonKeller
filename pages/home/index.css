@@ -61,3 +61,12 @@ img{
     flex-direction: column;
     gap: 2rem;
 }
+.user-img{
+    cursor: pointer;
+}
+.post-content{
+    border: none;
+    resize: none;
+    font-family: var(--font-family);
+    overflow: hidden;
+}

@@ -74,10 +74,10 @@ export function deletePostForm(id){
     formulario.classList.add("formbase")
 
     formulario.insertAdjacentHTML("beforeend", `
-        <h3>Deletar Post</h3>
+        <h3>Confirmação de exclusão</h3>
 
-        <h4>Certeza que deseja excluir este post?</h4>
-        <p>Após executar essa ação não será possível desfazer</p>
+        <h2 class="subtitle-delete">Tem certeza que deseja excluir este post?</h2>
+        <p>Essa ação não poderá ser desfeita, então pedimos que tenha cautela antes de concluir</p>
 
         <div>
             <button type="submit" class="createButton">Deletar Post</button>
