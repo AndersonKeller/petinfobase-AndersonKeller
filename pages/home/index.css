@@ -54,6 +54,7 @@ img{
 .div-btns{
     display: flex;
     gap: 1.5rem;
+    justify-content: flex-end;
 }
 .body-li{
     display: flex;

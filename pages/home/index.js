@@ -1,19 +1,31 @@
 import { gettAllPost } from "../../scripts/api.js";
 import { createPost } from "../../scripts/api.js";
+import { createPostForm, deletePostForm, updatePostForm } from "../../scripts/forms.js";
 import { createModalWrapper, createModal } from "../../scripts/modal.js";
 
 //createModalWrapper()
 //createModal()
 
 function createPostButton(){
-
+    const btnCreate = document.querySelector(".btn-new-post");
+    btnCreate.addEventListener("click",()=>{
+        createModalWrapper()
+        const createInput = createPostForm()
+        createModal(createInput);
+        const btnCancel = document.querySelector(".btn-cancel");
+        btnCancel.addEventListener("click",()=>{
+            const wrapper = document.querySelector(".modal-wrapper");
+            wrapper.remove()
+        })
+    })
 }
+createPostButton()
 
-async function renderPost(){
+export async function renderPost(){
     const listPost = await gettAllPost()
     console.log(listPost)
     const ul = document.querySelector(".ul-feed");
-
+    ul.innerHTML = ""
     listPost.forEach((post)=>{
         //seta o avatar no header da home no header 
         const userAvatar = document.querySelector(".user-img");
@@ -22,6 +34,7 @@ async function renderPost(){
         console.log(post)
         const li = document.createElement("li");
         li.classList.add("li-feed");
+        li.id = `${post.id}`
         const divHeader = document.createElement("div");
         divHeader.classList.add("header-li");
 
@@ -42,9 +55,26 @@ async function renderPost(){
         const btnEditar = document.createElement("button");
         btnEditar.classList.add("btn-editar");
         btnEditar.innerText = "Editar";
+        btnEditar.addEventListener("click",()=>{
+            const editInput = updatePostForm(post);
+            createModalWrapper()
+            createModal(editInput);
+            const btnCancel = document.querySelector(".btn-cancel");
+            btnCancel.addEventListener("click",()=>{
+                const wrapper = document.querySelector(".modal-wrapper");
+                wrapper.remove()
+            })
+        })
         const btnExcluir = document.createElement("button");
         btnExcluir.classList.add("btn-excluir");
         btnExcluir.innerText = "Excluir";
+        btnExcluir.addEventListener("click",()=>{
+            const deleteInput = deletePostForm(post.id);
+            console.log(deleteInput)
+            createModalWrapper()
+            createModal(deleteInput);
+        })
+
         divBtns.append(btnEditar,btnExcluir);
 
         divHeader.append(divInfos,divBtns);

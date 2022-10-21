@@ -14,11 +14,13 @@
 .modal-container{
     background-color: var(--gray800);
     width: 30%;
-    height: 50%;
+    height: max-content;
     border-radius: 8px;
     margin-top: 50px;
     position: relative;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 .btn-close-modal{
     position: absolute;

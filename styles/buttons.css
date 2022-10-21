@@ -3,13 +3,19 @@ button{
     cursor: pointer;
     border: none;
     border-radius: 4px;
-    width: 100%;
+   
     padding: 0.5rem 1rem;
 }
-.btn-form{
+.btn-form, .btn-new-post{
     background-color: var(--brand100);
     color: var(--gray800);
     margin-top: 1rem;
+    border: 1px solid var(--brand100);
+}
+.btn-submit{
+    background-color: var(--brand100);
+    color: var(--gray800);
+    
     border: 1px solid var(--brand100);
 }
 .btn-form:disabled{
@@ -21,7 +27,11 @@ button{
     color: var(--gray100);
     background-color: var(--gray800);
     border: 2px solid var(--gray700);
+    width: 100%;
 }
 .btn-back-login{
     width: 50%;
+}
+.btn-close-modal{
+    padding: 0;
 }

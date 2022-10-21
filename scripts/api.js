@@ -95,3 +95,38 @@ export async function createPost(data){
     console.log(responseJson)
     return response;
 }
+
+export async function updatePost(data, id){
+    const user = await getLocalStorage();
+    try{
+        const response = await fetch(`${baseUrl}posts/${id}`,{
+            method: "PATCH",
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${user.token}`
+            },
+            body: JSON.stringify(data)
+        })
+        const responseJson = await response.json();
+        return responseJson
+
+    }catch(error){
+        return error
+    }
+}
+export async function deletePost(id){
+    const user = await getLocalStorage();
+    try{
+        const response = await fetch(`${baseUrl}posts/${id}`,{
+            method: "DELETE",
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${user.token}`
+            }
+        })
+        const responseJson = response.json();
+        return responseJson;
+    }catch(error){
+        return error
+    }
+}

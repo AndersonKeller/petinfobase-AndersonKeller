@@ -6,15 +6,20 @@ export function createModalWrapper(){
     body.appendChild(modalWrapper)
 }
 
-export function createModal(){
+export function createModal(children){
+    console.log(children)
     const modalContainer = document.createElement("div");
     modalContainer.classList.add("modal-container");
 
     const btnClose = document.createElement("button");
     btnClose.classList.add("btn-close-modal")
     btnClose.innerText = "X";
-    modalContainer.appendChild(btnClose)
-
+    btnClose.addEventListener("click",()=>{
+        const wrapper = document.querySelector(".modal-wrapper");
+        wrapper.remove()
+    })
+    modalContainer.append(btnClose,children)
+    
     const wrapper = document.querySelector(".modal-wrapper");
     wrapper.appendChild(modalContainer)
 }
