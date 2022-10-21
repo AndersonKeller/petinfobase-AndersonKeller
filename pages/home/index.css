@@ -70,3 +70,6 @@ img{
     font-family: var(--font-family);
     overflow: hidden;
 }
+a{
+    cursor: pointer;
+}

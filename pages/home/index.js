@@ -89,6 +89,11 @@ export async function renderPost(){
         pContent.innerText = `${post.content}`;
         pContent.maxLength = "145";
         const linkContent = document.createElement("a");
+        linkContent.addEventListener("click",()=>{
+            const postComplete = modalPostComplete(post);
+            createModalWrapper()
+            createModal(postComplete)
+        })
         linkContent.innerText = "Acessar publicação"
         divBody.append(h2Title,pContent,linkContent);
 
@@ -97,6 +102,43 @@ export async function renderPost(){
     })
 
 }
+
+function modalPostComplete(post){
+    console.log(post)
+    const li = document.createElement("li");
+        li.classList.add("li-feed");
+        li.id = `${post.id}`
+        const divHeader = document.createElement("div");
+        divHeader.classList.add("header-li");
+
+        const divInfos = document.createElement("div");
+        divInfos.classList.add("div-infos");
+        const imgUser = document.createElement("img");
+        imgUser.src = `${post.user.avatar}`;
+        const h2Name = document.createElement("h2");
+        h2Name.classList.add("user-name")
+        h2Name.innerText = `${post.user.username}`;
+        const pDate = document.createElement("p");
+        pDate.classList.add("date-text");
+        pDate.innerText = `${post.createdAt}`;
+        divInfos.append(imgUser,h2Name,pDate);
+
+        const divBody = document.createElement("div");
+        divBody.classList.add("body-li");
+        const h2Title = document.createElement("h2");
+        h2Title.classList.add("post-title");
+        h2Title.innerText = `${post.title}`;
+        const pContent = document.createElement("p");
+        pContent.classList.add("post-content");
+        pContent.innerText = `${post.content}`;
+        divBody.append(divInfos,h2Title,pContent);
+
+        li.append(divHeader,divBody);
+
+        return li
+
+}
+
 renderPost()
 function clickExitUser(){
     const imgUser = document.querySelector(".user-img");
