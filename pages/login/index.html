@@ -4,10 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles/globalStyles.css">
+    <link rel="stylesheet" href="../../styles/inputs.css">
+    <link rel="stylesheet" href="../../styles/buttons.css">
+    <link rel="stylesheet" href="../../styles/texts.css">
+    <link rel="stylesheet" href="../../styles/toast.css">
+    <link rel="stylesheet" href="index.css">
     <title>Petinfo - Login</title>
 </head>
 <body>
-    <main></main>
+    <main>
+        <section class="section-main">
+            <div class="div-title">
+                <h1 class="title">Petinfo</h1>
+                <h2 class="subtitle"><small>Amor</small> e 
+                    <small>carinho</small> por meio do conhecimento</h2>
+                    <p class="description">Todas as informações para melhorar a vida do seu pet em um só lugar</p>
+                    <ul class="ul-imgs">
+                        <li class="li-imgs">
+                            <img src="../../assets/img/cat1.png" alt="">
+                        </li>
+                        <li class="li-imgs">
+                            <img src="../../assets/img/dog2.png" alt="">
+                        </li>
+                        <li class="li-imgs">
+                            <img src="../../assets/img/cat3.png" alt="">
+                        </li>
+                        <li class="li-imgs img-absolute">
+                            <img src="../../assets/img/dog4.png" alt="">
+                        </li>
+                    </ul>
+            </div>
+            <div class="div-login">
+                <h2 class="login-title">Login</h2>
+                <form>
+                    <label for="email" class="user-label">Usuário</label>
+                <input placeholder="Digite seu email" type="email" class="input-user" id="email">
+                <label for="password" class="password-label">Senha</label>
+                <input placeholder="Digite sua senha" type="password" id="password" class="input-password">
+                <button class="btn-form" type="submit">Acessar</button>
+                </form>
+                <div class="register">
+                    <h2 class="register-title">Ainda não possui conta?</h2>
+                    <p class="register-text">Clicando no botão abaixo, você pode se cadastrar rapidamente</p>
+                    <button class="btn-register">Cadastrar</button>
+                </div>
+            </div>
+        </section>
+    </main>
     <script type="module" src="index.js"></script>
 </body>
 </html>

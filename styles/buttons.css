@@ -1,0 +1,27 @@
+button{
+    height: 2rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    padding: 0.5rem 1rem;
+}
+.btn-form{
+    background-color: var(--brand100);
+    color: var(--gray800);
+    margin-top: 1rem;
+    border: 1px solid var(--brand100);
+}
+.btn-form:disabled{
+    background-color: var(--brand200);
+    color: var(--gray600);
+    border: none;
+}
+.btn-register{
+    color: var(--gray100);
+    background-color: var(--gray800);
+    border: 2px solid var(--gray700);
+}
+.btn-back-login{
+    width: 50%;
+}
