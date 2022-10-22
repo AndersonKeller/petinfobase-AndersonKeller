@@ -30,3 +30,6 @@
     height: 30px;
     text-align: center;
 }
+.post-content{
+    color: var(--gray200);
+}

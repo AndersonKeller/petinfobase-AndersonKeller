@@ -80,7 +80,7 @@ export function deletePostForm(id){
         <p>Essa ação não poderá ser desfeita, então pedimos que tenha cautela antes de concluir</p>
 
         <div>
-            <button type="submit" class="createButton">Deletar Post</button>
+            <button type="submit" class="btn-delete">Deletar Post</button>
         </div>
     `)
     formulario.addEventListener("submit",async (e)=>{

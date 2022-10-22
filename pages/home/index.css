@@ -5,6 +5,7 @@ header{
     align-items: center;
     height: 6rem;
     padding: 1rem;
+    position: relative;
 }
 nav{
     display: flex;
@@ -72,4 +73,26 @@ img{
 }
 a{
     cursor: pointer;
+}
+
+.div-component{
+    position: absolute;
+    right: 16px;
+    bottom: -52px;
+    background-color: var(--gray800);
+    border: none;
+    border-radius: 4px;
+    padding-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 170px;
+}
+.div-component p{
+    padding-left: 0.5rem;
+    color: var(--gray100);
+    overflow: hidden;
+}
+.div-component-off{
+    display: none;
 }

@@ -1,10 +1,20 @@
 import { gettAllPost } from "../../scripts/api.js";
 import { createPost } from "../../scripts/api.js";
 import { createPostForm, deletePostForm, updatePostForm } from "../../scripts/forms.js";
+import { getLocalStorage } from "../../scripts/localStorage.js";
 import { createModalWrapper, createModal } from "../../scripts/modal.js";
 
 //createModalWrapper()
 //createModal()
+//verifyPermission()
+// function verifyPermission(){
+//     const user = getLocalStorage()
+//     console.log(user)
+//     if(user == ""){
+//         console.log(user)
+//         window.location.replace("../login/index.html")
+//     }
+// }
 
 function createPostButton(){
     const btnCreate = document.querySelector(".btn-new-post");
@@ -42,12 +52,18 @@ export async function renderPost(){
         divInfos.classList.add("div-infos");
         const imgUser = document.createElement("img");
         imgUser.src = `${post.user.avatar}`;
+        clickExitUser(post.user.username)
         const h2Name = document.createElement("h2");
         h2Name.classList.add("user-name")
         h2Name.innerText = `${post.user.username}`;
         const pDate = document.createElement("p");
         pDate.classList.add("date-text");
-        pDate.innerText = `${post.createdAt}`;
+        
+        const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+        let date = new Date(post.createdAt)
+        let dateFormated = (meses[(date.getMonth())]+" de "+ date.getFullYear())
+       
+        pDate.innerText = `| ${dateFormated}`;
         divInfos.append(imgUser,h2Name,pDate);
 
         const divBtns = document.createElement("div");
@@ -120,7 +136,10 @@ function modalPostComplete(post){
         h2Name.innerText = `${post.user.username}`;
         const pDate = document.createElement("p");
         pDate.classList.add("date-text");
-        pDate.innerText = `${post.createdAt}`;
+        const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+        let date = new Date(post.createdAt)
+        let dateFormated = (meses[(date.getMonth())]+" de "+ date.getFullYear())
+        pDate.innerText = `${dateFormated}`;
         divInfos.append(imgUser,h2Name,pDate);
 
         const divBody = document.createElement("div");
@@ -140,10 +159,36 @@ function modalPostComplete(post){
 }
 
 renderPost()
-function clickExitUser(){
+/* header.insertAdjacentHTML("beforeend",`
+        <div class="div-component div-component-off">
+        <p class="user-log">@samuelleaoui</p>
+        <button class="btn-logout">Sair da conta</button>
+         </div>
+        `)*/
+function clickExitUser(user){
     const imgUser = document.querySelector(".user-img");
-    imgUser.addEventListener("click",()=>{
-        console.log("OI")
+    imgUser.addEventListener("mouseover",()=>{
+        const header = document.querySelector("header");
+        const divComponent = document.createElement("div");
+        divComponent.classList.add("div-component");
+        divComponent.classList.add("div-component-off")
+        const pUserLog = document.createElement("p");
+        pUserLog.classList.add("user-log");
+        pUserLog.innerText = user;
+        const btnLogout = document.createElement("button");
+        btnLogout.classList.add("btn-logout");
+        btnLogout.innerText = "Sair da conta";
+
+        btnLogout.addEventListener("click",()=>{
+            localStorage.setItem("user","");
+            window.location.replace("../login/index.html")
+        })
+
+        divComponent.append(pUserLog,btnLogout)
+        header.appendChild(divComponent)
+
+        const component = document.querySelector(".div-component");
+        component.classList.toggle("div-component-off")
     })
 }
-clickExitUser()
+//clickExitUser()

@@ -4,4 +4,5 @@ input{
     border-radius: 4px;
     background-color: var(--gray800);
     border: 1px solid var(--gray700);
+    font-family: var(--font-family);
 }
