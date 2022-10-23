@@ -1,20 +1,19 @@
 import { gettAllPost } from "../../scripts/api.js";
 import { createPost } from "../../scripts/api.js";
 import { createPostForm, deletePostForm, updatePostForm } from "../../scripts/forms.js";
-import { getLocalStorage } from "../../scripts/localStorage.js";
+import { getLocalId, getLocalStorage } from "../../scripts/localStorage.js";
 import { createModalWrapper, createModal } from "../../scripts/modal.js";
 
 //createModalWrapper()
 //createModal()
-//verifyPermission()
-// function verifyPermission(){
-//     const user = getLocalStorage()
-//     console.log(user)
-//     if(user == ""){
-//         console.log(user)
-//         window.location.replace("../login/index.html")
-//     }
-// }
+verifyPermission()
+async function verifyPermission(){
+    const user = await getLocalStorage()
+    if(!user){
+       
+        window.location.replace("../login/index.html")
+    }
+}
 
 function createPostButton(){
     const btnCreate = document.querySelector(".btn-new-post");
@@ -33,15 +32,16 @@ createPostButton()
 
 export async function renderPost(){
     const listPost = await gettAllPost()
-    console.log(listPost)
+
+    const userId = await getLocalId();
     const ul = document.querySelector(".ul-feed");
     ul.innerHTML = ""
     listPost.forEach((post)=>{
+       
         //seta o avatar no header da home no header 
         const userAvatar = document.querySelector(".user-img");
          userAvatar.src = `${post.user.avatar}`
 
-        console.log(post)
         const li = document.createElement("li");
         li.classList.add("li-feed");
         li.id = `${post.id}`
@@ -52,7 +52,7 @@ export async function renderPost(){
         divInfos.classList.add("div-infos");
         const imgUser = document.createElement("img");
         imgUser.src = `${post.user.avatar}`;
-        clickExitUser(post.user.username)
+        clickExitUser(userId)
         const h2Name = document.createElement("h2");
         h2Name.classList.add("user-name")
         h2Name.innerText = `${post.user.username}`;
@@ -93,7 +93,14 @@ export async function renderPost(){
 
         divBtns.append(btnEditar,btnExcluir);
 
-        divHeader.append(divInfos,divBtns);
+        if(userId == post.user.email){
+            console.log(post.user.email)
+            divHeader.append(divInfos,divBtns);
+        }else{
+            console.log(post.user.email)
+            divHeader.appendChild(divInfos)
+        }
+       
 
         const divBody = document.createElement("div");
         divBody.classList.add("body-li");
@@ -159,12 +166,7 @@ function modalPostComplete(post){
 }
 
 renderPost()
-/* header.insertAdjacentHTML("beforeend",`
-        <div class="div-component div-component-off">
-        <p class="user-log">@samuelleaoui</p>
-        <button class="btn-logout">Sair da conta</button>
-         </div>
-        `)*/
+
 function clickExitUser(user){
     const imgUser = document.querySelector(".user-img");
     imgUser.addEventListener("mouseover",()=>{
@@ -180,8 +182,10 @@ function clickExitUser(user){
         btnLogout.innerText = "Sair da conta";
 
         btnLogout.addEventListener("click",()=>{
-            localStorage.setItem("user","");
-            window.location.replace("../login/index.html")
+            localStorage.removeItem("user");
+           setTimeout( ()=> verifyPermission(),1000)
+           
+        
         })
 
         divComponent.append(pUserLog,btnLogout)

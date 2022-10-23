@@ -16,19 +16,25 @@ export async function loginAPI(data){
      })
      if(response.ok){
         const responseJson = await  response.json();
-        toast("Sucesso!", "Login feito com sucesso")
-        localStorage.setItem("user",JSON.stringify(responseJson))
+        toast("Sucesso!", "Login feito com sucesso");
+       
+        
+        localStorage.setItem("user",JSON.stringify(responseJson));
+        localStorage.setItem("userId",JSON.stringify(data.email))
          
          setTimeout(() => {
             window.location.replace("../home/index.html")
         }, 4000)
         
      }else{
-
+        toast("Ops!", "Algo deu errado");
      }
-   }catch{
-
+     
+   }catch(error){
+        console.log(error)
+        return error;
    }
+   
 }
 
 export async function registerAPI(data){
@@ -56,6 +62,7 @@ export async function registerAPI(data){
 
 export async function gettAllPost(){
     const user = await getLocalStorage();
+   
     try {
         const response = await fetch(baseUrl + "posts", {
             method: "GET",

@@ -28,8 +28,8 @@ export function createPostForm(){
         })
         await createPost(newPost);
         await renderPost();
-        // const wrapper = document.querySelector(".modal-wrapper");
-        // wrapper.remove()
+        const wrapper = document.querySelector(".modal-wrapper");
+        wrapper.remove()
         
     });
     return formulario;
@@ -62,8 +62,8 @@ export function updatePostForm({title,content,id}){
         })
         await updatePost(newPost,id)
         await renderPost();
-        // const wrapper = document.querySelector(".modal-wrapper");
-        // wrapper.remove()
+        const wrapper = document.querySelector(".modal-wrapper");
+         wrapper.remove()
         
     });
     return formulario;
@@ -88,6 +88,8 @@ export function deletePostForm(id){
 
         await deletePost(id);
         await renderPost();
+        const wrapper = document.querySelector(".modal-wrapper");
+         wrapper.remove()
 
     })
     return formulario
