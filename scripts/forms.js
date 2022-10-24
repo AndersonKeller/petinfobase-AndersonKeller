@@ -4,13 +4,13 @@ import { createPost, updatePost, deletePost } from "./api.js";
 export function createPostForm(){
     const formulario = document.createElement("form")
     formulario.classList.add("formbase");
-
+// <input type="text" placeholder="Desenvolva o conteúdo do post aqui..." name="content" required>
     formulario.insertAdjacentHTML("beforeend",`
     <h3 class="post-title">Criando novo post</h3>
         <label for="title">Titulo</label>
         <input placeholder="Digite o título aqui..." name="title" required>
         <label for="content">Conteúdo do post</label>
-        <input type="text" placeholder="Desenvolva o conteúdo do post aqui..." name="content" required>
+        <textarea placeholder="Desenvolva o conteúdo do post aqui..." name="content" class="post-textarea" required cols="30" rows="10"></textarea>
         <div class="div-btns">
         <button class="btn-cancel">Cancelar</button>
         <button type="submit" class="btn-submit">Publicar</button>
