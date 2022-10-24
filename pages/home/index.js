@@ -110,7 +110,8 @@ export async function renderPost(){
         const pContent = document.createElement("textarea");
         pContent.classList.add("post-content");
         pContent.innerText = `${post.content}`;
-        pContent.maxLength = "145";
+        
+        pContent.maxlength = "145";
         const linkContent = document.createElement("a");
         linkContent.addEventListener("click",()=>{
             const postComplete = modalPostComplete(post);
@@ -155,7 +156,7 @@ function modalPostComplete(post){
         h2Title.classList.add("post-title");
         h2Title.innerText = `${post.title}`;
         const pContent = document.createElement("p");
-        pContent.classList.add("post-content");
+        pContent.classList.add("post-complete-modal");
         pContent.innerText = `${post.content}`;
         divBody.append(divInfos,h2Title,pContent);
 

@@ -44,6 +44,7 @@ export function updatePostForm({title,content,id}){
         <label for="title">Titulo</label>
         <input placeholder="Digite o título aqui..." name="title" value="${title}" required>
         <label for="content">Conteúdo do post</label>
+        
         <input type="text" placeholder="Desenvolva o conteúdo do post aqui..." name="content" value="${content}" required>
         <div class="div-btns">
         <button class="btn-cancel">Cancelar</button>
