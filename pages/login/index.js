@@ -13,6 +13,7 @@ function loginData(){
             //console.log(e.value)
             user[e.id] = e.value;
             //console.log(user)
+            disableButton()
            }
            //loginAPI(user)
         })
@@ -40,5 +41,7 @@ function disableButton(){
     if(inputEmail.value == "" && inputPassword.value ==""){
         btnLogin.setAttribute("disabled",true)
     }
+    else{
+        btnLogin.removeAttribute("disabled")
+    }
 }
-disableButton()
