@@ -49,3 +49,20 @@ button{
     background-color: var(--alert100);
     color: var(--gray900);
 }
+.btn-loading{
+    
+    color: var(--brand100);
+    animation: loadingAnimation infinite linear;
+}
+@keyframes loadingAnimation{
+    0%{
+        transform: translateX(90dg);
+    }
+    100%{
+        transform: translateX(360dg);
+        transform: rotateX(360dg);
+    }
+}
+.btn-loading-text{
+    color: var(--brand100);
+}

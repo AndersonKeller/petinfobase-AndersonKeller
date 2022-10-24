@@ -6,6 +6,11 @@ const baseUrl = "http://localhost:3333/"
 export async function loginAPI(data){
     
    try{
+    const btnLog = document.querySelector(".btn-form")
+    btnLog.insertAdjacentHTML("afterbegin",`
+    <img src="../../assets/img/spinner.png" class="btn-loading">
+    `)
+    btnLog.classList.add("btn-loading-text");
     const response = await fetch(`${baseUrl}login`,{
         method: "POST",
          headers:{
@@ -21,8 +26,16 @@ export async function loginAPI(data){
         
         localStorage.setItem("user",JSON.stringify(responseJson));
         localStorage.setItem("userId",JSON.stringify(data.email))
-         
+       btnLog.insertAdjacentHTML("afterbegin",``);
+            //console.log(filho)
+            const img = document.querySelector(".btn-loading")
+            //btnLog.removeChild(btnLog.firstChild)
+            setTimeout(()=>{
+                img.remove();
+                btnLog.classList.remove("btn-loading-text");
+            },3000)
          setTimeout(() => {
+           
             window.location.replace("../home/index.html")
         }, 4000)
         
