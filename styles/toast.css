@@ -2,13 +2,14 @@
     font-family: var(--font-family-1);
     position: fixed;
     display: flex;
-    justify-items: flex-start;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
     flex-direction: column;
-    gap: 10px;
-    width: 300px;
-    padding: 10px;
+    gap: 1rem;
+    width: 400px;
+    padding: 1rem;
     color: var(--grey-1);
+    background-color: var(--gray900);
     border-radius: 8px;
     box-shadow: 0px 4px 4px var(--box-shadow-color);
     animation: toastIt 4000ms ease-in forwards;
@@ -16,8 +17,8 @@
 
 @keyframes toastIt {
     0%   {right: 30px; bottom:-100px}
-    25%  {right: 30px; bottom:10px}
-    50%  {right: 30px; bottom:10px}
+    25%  {right: 30px; bottom:20px}
+    50%  {right: 30px; bottom:20px}
     100% {right: 30px; bottom:-100px}
 }
 .header-toast{
@@ -34,13 +35,6 @@
 .successToast {
     border: 2px solid var(--sucess100);
     background-color: var(--sucess100);
-}
-
-
-.toast-container > div {
-    display: flex;
-    
-    gap: 5px;
 }
 
 .toast-container > div > h3 {

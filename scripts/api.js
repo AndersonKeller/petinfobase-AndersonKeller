@@ -22,9 +22,9 @@ export async function loginAPI(data){
         localStorage.setItem("user",JSON.stringify(responseJson));
         localStorage.setItem("userId",JSON.stringify(data.email))
          
-         setTimeout(() => {
-            window.location.replace("../home/index.html")
-        }, 4000)
+        //  setTimeout(() => {
+        //     window.location.replace("../home/index.html")
+        // }, 4000)
         
      }else{
         toast("Ops!", "Algo deu errado");
