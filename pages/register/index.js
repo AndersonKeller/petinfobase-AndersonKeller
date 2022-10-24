@@ -31,3 +31,16 @@ function toglePages(){
     })
 }
 toglePages()
+
+function disableButton(){
+    const btnLogin = document.querySelector(".btn-form");
+    const inputEmail = document.querySelector("#email");
+    const inputPassword = document.querySelector("#password");
+    const inputUserName = document.querySelector("#username");
+    const inputAvatar = document.querySelector("#avatar")
+
+    if(inputEmail.value == "" && inputPassword.value =="" && inputUserName.value =="" && inputAvatar.value == ""){
+        btnLogin.setAttribute("disabled",true);
+    }
+}
+disableButton()

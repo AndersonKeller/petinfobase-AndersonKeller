@@ -35,7 +35,7 @@ toglePage()
 function disableButton(){
     const btnLogin = document.querySelector(".btn-form");
     const inputEmail = document.querySelector("#email");
-    const inputPassword = document.querySelector("#passwprd");
+    const inputPassword = document.querySelector("#password");
 
     if(inputEmail.value == "" && inputPassword.value ==""){
         btnLogin.setAttribute("disabled",true)
