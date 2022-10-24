@@ -9,6 +9,7 @@ function registerData(){
         elements.forEach((e)=>{
             if(e.tagName == "INPUT" && e.value != ""){
                 user[e.id] = e.value;
+                disableButton()
             }
         })
         await registerAPI(user)
@@ -42,5 +43,7 @@ function disableButton(){
     if(inputEmail.value == "" && inputPassword.value =="" && inputUserName.value =="" && inputAvatar.value == ""){
         btnLogin.setAttribute("disabled",true);
     }
+    else{
+        btnLogin.removeAttribute("disabled")
+    }
 }
-disableButton()
