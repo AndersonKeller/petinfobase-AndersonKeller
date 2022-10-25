@@ -52,15 +52,16 @@ button{
 .btn-loading{
     
     color: var(--brand100);
-    animation: loadingAnimation infinite linear;
+    animation: loadingAnimation 2s infinite linear;
+   
 }
 @keyframes loadingAnimation{
-    0%{
-        transform: translateX(90dg);
+    from{
+        transform: rotate(0deg)
     }
-    100%{
-        transform: translateX(360dg);
-        transform: rotateX(360dg);
+    to{
+        transform: rotate(360deg)
+        
     }
 }
 .btn-loading-text{

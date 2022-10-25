@@ -26,10 +26,10 @@ export async function loginAPI(data){
         
         localStorage.setItem("user",JSON.stringify(responseJson));
         localStorage.setItem("userId",JSON.stringify(data.email))
-       btnLog.insertAdjacentHTML("afterbegin",``);
-            //console.log(filho)
+       
+           
             const img = document.querySelector(".btn-loading")
-            //btnLog.removeChild(btnLog.firstChild)
+           
             setTimeout(()=>{
                 img.remove();
                 btnLog.classList.remove("btn-loading-text");
@@ -51,6 +51,11 @@ export async function loginAPI(data){
 }
 
 export async function registerAPI(data){
+    const btnLog = document.querySelector(".btn-form")
+    btnLog.insertAdjacentHTML("afterbegin",`
+    <img src="../../assets/img/spinner.png" class="btn-loading">
+    `)
+    btnLog.classList.add("btn-loading-text");
     const response = await fetch(`${baseUrl}users/create`,{
         method: "POST",
         headers:{
@@ -62,6 +67,12 @@ export async function registerAPI(data){
     if (response.ok) {
         toast("Sua conta foi criada com sucesso!","Agora você pode acessar os conteúdos utilizando seu usuário e senha na página de login:")
 
+        const img = document.querySelector(".btn-loading")
+           
+        setTimeout(()=>{
+            img.remove();
+            btnLog.classList.remove("btn-loading-text");
+        },3000)
         setTimeout(() => {
             window.location.replace("../login/index.html")
         }, 4000)
